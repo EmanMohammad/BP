@@ -50,6 +50,5 @@ angular.module('MetronicApp').controller('GeneralOperationsController', function
     $rootScope.settings.layout.pageContentWhite = true;
     $rootScope.settings.layout.pageBodySolid = false;
     $rootScope.settings.layout.pageSidebarClosed = false;
-    //$rootScope.settings.layout.pageSidebarClosed = false; 
 })
 
