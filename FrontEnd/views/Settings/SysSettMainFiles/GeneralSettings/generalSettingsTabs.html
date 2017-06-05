@@ -1,0 +1,10 @@
+
+
+<uib-tabset class="tabs-right" active="activegeneralTabIndex">
+    <uib-tab ng-repeat="generalTab in generalSettingsTabs" heading="{{generalTab.title}}" active="generalTab.active" ng-init="generalTab.active = $index === isProfile">
+        <div class="col-md-9">
+            <ng-include src="generalTab.url"></ng-include>
+        </div>
+    </uib-tab>
+
+</uib-tabset>

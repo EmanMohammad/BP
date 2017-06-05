@@ -1,0 +1,257 @@
+﻿<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">لوحه التحكم</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">  {{(FavoriteNames.collector == "1"?'المحصلين' :'المستخدمين')}}</a>
+        </li>
+    </ul>
+</div>
+<h3 class="page-title">
+    {{(FavoriteNames.collector == "1"?'المحصلين' :'المستخدمين')}}
+</h3>
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+
+            <span class="caption-subject font-white-sunglo bold uppercase">اضافه {{(FavoriteNames.collector == "1"?'محصل' :'مستخدم')}}</span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form action="#" class="form-horizontal" name='regForm' novalidate>
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                اسم {{(FavoriteNames.collector == "1"?'المحصل' :'المستخدم')}}
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="empArName" ng-model="newEmployee.empArName" name="empArName" required>
+                                <span class="error" ng-if="(regForm.empArName.$error.required) && regForm.empArName.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                اسم {{(FavoriteNames.collector == "1"?'المحصل' :'المستخدم')}} بالانجليزى
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="empEnName" ng-model="newEmployee.empEnName" name="empEnName" required>
+                                <span class="error" ng-if="(regForm.empEnName.$error.required) && regForm.empEnName.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                الجنسيه
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="nationalityName" ng-model="nationalityIdx" name="nationalityName" required>
+                                    <option value="">إختر</option>
+                                    <option ng-repeat="nationalityObj in NationalityData" value="{{$index}}">{{nationalityObj.nationalityName}}</option>
+                                </select>
+                                <span class="error" ng-if="(regForm.nationalityName.$error.required) && regForm.nationalityName.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                رقم بطاقه الهويه
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" id="IDNo" ng-model="newEmployee.idNo" name="IDNo" ng-pattern="/^[1-9]{1}[0-9]{9}$/" required>
+                                <span class="error" ng-if="(regForm.IDNo.$error.required) && regForm.IDNo.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" id="idNoVersion" ng-model="newEmployee.idNoVersion" name="idNoVersion" required>
+                                <span class="error" ng-if="(regForm.idNoVersion.$error.required)">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                نوع بطاقه الهويه
+                                <!--<span class="required" aria-required="true"> * </span>-->
+                            </label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="IdType" ng-model="IDTypeIdx" name="IdType">
+                                    <option value="">إختر</option>
+                                    <option ng-repeat="schIDTypeObj in schIDType" value="{{$index}}">{{schIDTypeObj.name}}</option>
+                                </select>
+                                <!--<span class="error" ng-if="(regForm.IdType.$error.required) && regForm.IdType.$touched">
+                                    هذا المدخل مطلوب
+                                </span>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                مكان الاصدار
+                                <!--<span class="required" aria-required="true"> * </span>-->
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="issuePlace" ng-model="newEmployee.issuePlace" name="issuePlace">
+                                <!--<span class="error" ng-if="(regForm.issuePlace.$error.required) && regForm.issuePlace.$touched">
+                                    هذا المدخل مطلوب
+                                </span>-->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                رقم الجوال
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="mobile" ng-model="newEmployee.mobile" name="mobile" required>
+                                <span class="error" ng-if="(regForm.issuePlace.$error.required) && regForm.issuePlace.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                تاريخ الانتهاء
+                                <!--<span class="required" aria-required="true"> * </span>-->
+                            </label>
+                            <div class="col-md-6">
+                                <input type="date" class="form-control" id="Date" ng-model="newEmployee.endDate" name="Date">
+                                <!--<span class="error" ng-if="(regForm.Date.$error.required) && regForm.Date.$touched">
+                                    هذا المدخل مطلوب
+                                </span>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!--<div class="form-group">
+                            <label class="col-md-4">تاريخ الانتهاء الهجرى</label>
+                            <div class="col-md-6">
+                                <input type="date" class="form-control" ng-model="newEmployee.endDate" name="Hijri" />
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                الفروع<span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="Branches" ng-model="branchesIdx" name="Branches" required>
+                                    <option value="">إختر</option>
+                                    <option ng-repeat="branchObj in BranchesData" value="{{$index}}">{{branchObj.branchName}}</option>
+                                </select>
+                                <span class="error" ng-if="(regForm.Branches.$error.required) && regForm.Branches.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                البريد الالكترونى
+                                <!--<span class="required" aria-required="true"> * </span>-->
+                            </label>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" id="email" ng-model="newEmployee.email" name="email">
+                                <!--<span class="error" ng-if="(regForm.email.$error.required) && regForm.email.$touched">
+                                    هذا المدخل مطلوب
+                                </span>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                نوع {{(FavoriteNames.collector == "1"?'المحصل' :'المستخدم')}}
+                                <!--<span class="required" aria-required="true"> * </span>-->
+                            </label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="CollectionType" ng-model="collectionTypeIdx" name="CollectionType">
+                                    <option value="">إختر</option>
+                                    <option ng-repeat="collectionTypeDataObj in CollectionTypeData" value="{{$index}}">{{collectionTypeDataObj.userType}}</option>
+                                </select>
+                                <!--<span class="error" ng-if="(regForm.CollectionType.$error.required) && regForm.CollectionType.$touched">
+                                    هذا المدخل مطلوب
+                                </span>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                مستوى {{(FavoriteNames.collector == "1"?'المحصل' :'المستخدم')}}
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="CollectionType" ng-model="newEmployee.collectorLevel" name="CollectionType" required>
+                                    <option value="">اختر</option>
+                                    <option value="1">مستوى اول</option>
+                                    <option value="2">مستوى تاني</option>
+                                </select>
+                                <span class="error" ng-if="(regForm.CollectionType.$error.required) && regForm.CollectionType.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                اسم المستخدم<span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="Name" ng-model="newEmployee.userName" name="Name" required>
+                                <span class="error" ng-if="(regForm.Name.$error.required) && regForm.Name.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                كلمه المرور
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" id="Psw" ng-model="newEmployee.password" name="Psw" required>
+                                <span class="error" ng-if="(regForm.Psw.$error.required) && regForm.Psw.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                النظام الامنى<span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-6">
+                                <select class="form-control" ng-model="newEmployee.security" required>
+                                    <option value="">اختر نظام</option>
+                                    <option ng-repeat="role in SecurityRoles" value="{{role.sRoleID}}">{{role.sRoleArName}}</option>
+                                </select>
+                                <!--<input type="text" class="form-control" id="Security" ng-model="newEmployee.security " name="Security" required>-->
+                                <span class="error" ng-if="(regForm.Security.$error.required) && regForm.Security.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="form-actions right">
+
+                        <input type="button" value="اضافة" ng-click="saveEmployees()&& regForm.$valid" ng-show="!isEdit" class="btn green" ng-disabled="regForm.$invalid">
+
+                        <a href="#Employees" class="btn default "><i class="glyphicon glyphicon-repeat"></i> مسح</a>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

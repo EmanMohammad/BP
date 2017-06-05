@@ -1,0 +1,113 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header box green">
+                <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name='regForm' novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="col-md-6">
+                                    ساعات دوام المحصل {{empArName}}
+                                </h4>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-6">
+                                    غير محدد
+                                    <span class="required" aria-required="true"> * </span>
+                                </label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" id="Promise" name="Promise" ng-model="time.specific" ng-checked="time.specific=='True'" class="ng-pristine ng-valid ng-touched">
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-hide="time.specific=='True'">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label class="col-md-2">
+                                        من
+                                        <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-5">
+                                        <select class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" ng-model="time.fromTime" name="FirstlevelPeriod" required="">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="3">4</option>
+                                            <option value="1">5</option>
+                                            <option value="2">6</option>
+                                            <option value="3">7</option>
+                                            <option value="3">8</option>
+                                            <option value="3">9</option>
+                                            <option value="3">10</option>
+                                            <option value="3">11</option>
+                                            <option value="3">12</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <select class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" ng-model="time.fromTimeType" name="FirstlevelPeriod" required="">
+                                            <option value="ص">ص</option>
+                                            <option value="م">م</option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2">
+                                        الى
+                                        <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-5">
+                                        <select class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" ng-model="time.toTime" name="FirstlevelPeriod" required="">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="3">4</option>
+                                            <option value="1">5</option>
+                                            <option value="2">6</option>
+                                            <option value="3">7</option>
+                                            <option value="3">8</option>
+                                            <option value="3">9</option>
+                                            <option value="3">10</option>
+                                            <option value="3">11</option>
+                                            <option value="3">12</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <select class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" ng-model="time.toTimeType" name="FirstlevelPeriod" required="">
+                                            <option value="ص">ص</option>
+                                            <option value="م">م</option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" ng-click="close()" class="btn btn green" data-dismiss="modal">اضافة</button>
+                <button type="button" ng-click="cancel()" class="btn grey-cascade">مسح</button>
+            </div>
+        </div>
+    </div>
+</div>

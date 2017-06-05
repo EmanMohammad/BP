@@ -1,0 +1,31 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header box green">
+                <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name='regForm' novalidate>
+                    
+                    <div class="form-group">
+                        <label class="col-md-4">
+                           الإسم
+                            <span class="required" aria-required="true"> * </span>
+                        </label>
+                        <div class="col-md-7">
+                            <input class="form-control" id="itemName" ng-model="newItem.itemName" name="itemName" required>
+                            <span class="error" ng-if="regForm.itemName.$error.required && regForm.itemName.$touched">
+                                required
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="close()&& regForm.$valid" class="btn btn green" data-dismiss="modal" ng-disabled="regForm.$invalid">حفظ</button>
+                <button type="button" ng-click="cancel()" class="btn grey-cascade">الغاء</button>
+            </div>
+        </div>
+    </div>
+</div>

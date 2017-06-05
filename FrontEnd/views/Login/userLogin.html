@@ -1,0 +1,64 @@
+﻿
+        <!-- BEGIN LOGO -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="../assets/layouts/layout/img/logo.png" alt="" /> </a>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN LOGIN -->
+        <div class="content" ng-controller="loginController">
+            <!-- BEGIN LOGIN FORM -->
+            <form class="login-form" name="LoginForm" ng-show="LoginFormDisplay" novalidate>
+                <h3 class="form-title font-green">تسجيل دخول</h3>
+                <div class="alert alert-danger" ng-show="IsValid">
+                    <span > {{errorMsg}}</span>
+                </div>
+                <div class="form-group"   >
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">اسم المستخدم</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" required ng-model="Login.userName"  placeholder="اسم المستخدم" name="username" /> </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">كلمه السر</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"  required ng-model="Login.password"  placeholder="كلمه السر" name="password" />
+                    <span class="help-block"> <a href="javascript:;" id="forget-password" class="forget-password">نسيت كلمه المرور ؟</a></span>
+                    <input type="text" ng-show="false" ng-model="Login.status" />
+                 </div>
+                
+                 <div class="form-actions">
+              
+                    <button type="submit" class="btn green uppercase" style="float:left" ng-click="LoginEvent()"  >دخول</button>
+            
+                   <br />
+                 
+                  <br />
+                </div>
+                
+                <div class="create-account">
+                    <p>
+                        <a href="javascript:;" id="register-btn" class="uppercase">انشاء حساب</a>
+                    </p>
+                </div>
+            </form>
+            <!-- END LOGIN FORM -->
+            <!-- END LOGIN FORM -->
+            <!-- BEGIN FORGOT PASSWORD FORM -->
+            
+            <!-- END FORGOT PASSWORD FORM -->
+            <!-- BEGIN REGISTRATION FORM -->
+            
+            <!-- END REGISTRATION FORM -->
+        </div>
+       
+<meta charset="utf-8" />
+<!-- END THEME GLOBAL STYLES -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link href="../assets/pages/css/login-rtl.min.css" rel="stylesheet" type="text/css" />
+<!-- END PAGE LEVEL STYLES -->
+<!-- BEGIN THEME LAYOUT STYLES -->
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL SCRIPTS -->
+<script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+<!-- END THEME GLOBAL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="js/controllers/Login/loginController.js"></script>

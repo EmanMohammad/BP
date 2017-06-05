@@ -1,0 +1,104 @@
+﻿<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-search"></i>
+            <span class="caption-subject font-white-sunglo bold uppercase">بحث</span>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form action="#" class="form-horizontal">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-4">اسم {{(FavoriteNames.collector == "1"?'المحصل' :'المستخدم')}}</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" ng-model="Employee.empArName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">رقم الجوال</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" ng-model="Employee.mobile" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                نوع بطاقه الهويه
+                            </label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="IdType" ng-model="Employee.IDType_rowID" name="IdType">
+                                    <option value="">الكل</option>
+                                    <option ng-repeat="schIDTypeObj in schIDType"  value="{{schIDTypeObj._rowID}}">{{schIDTypeObj.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4"> الفروع</label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="Branches" ng-model="Employee.brnch_rowID" name="brnchId">
+                                    <option value="">الكل</option>
+                                    <option ng-repeat="branchObj in BranchesData" value="{{branchObj._rowID}}">{{branchObj.branchName}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                الجنسيه
+                            </label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="Nationality" ng-model="Employee.Nationality_rowID">
+                                    <option value="">الكل</option>
+                                    <option ng-repeat="nationalityObj in NationalityData" value="{{nationalityObj._rowID}}">{{nationalityObj.nationalityName}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4"> اسم المستخدم</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" ng-model="Employee.userName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4">  رقم بطاقه الهويه</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="IDNo" ng-model="Employee.idNo" name="IDNo" >
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label class="col-md-4">  نوع المستخدم</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control input-medium" ng-model="Employee.status" ng-init="myDropDown = '1'">
+                                    <option value="">  الكل</option>
+                                    <option value="1"> نشط </option>
+                                    <option value="0">  غير نشط</option>
+                                </select>
+                            </div>
+
+                        </div>-->
+
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-11" dir="ltr">
+                            <a ng-click="EmployeeeSearch()" class="btn btn-mini green">
+                                <i class="fa fa-search"></i> بحث
+                            </a>
+                            <button type="button" class="btn dark btn-outline" ng-click="Search_Cancle()">الغاء</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

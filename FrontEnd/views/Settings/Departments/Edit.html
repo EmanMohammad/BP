@@ -1,0 +1,66 @@
+﻿<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">لوحه التحكم</a>
+            <i class="fa fa-angle-left"></i>
+        </li>
+        <li>
+            <a href="#">الاعدادات</a>
+            <i class="fa fa-angle-left"></i>
+        </li>
+        <li>
+            <a href="#">تعديل قسم</a>
+        </li>
+    </ul>
+</div>
+<h3 class="page-title">
+    الأقسام
+</h3>
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <span class="caption-subject font-white-sunglo bold uppercase">تعديل قسم</span>
+        </div>
+    </div>
+
+    <div class="portlet-body form">
+        <form action="#" class="form-horizontal" name='regForm' novalidate>
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                القسم
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="deptName" ng-model="newDepartments.deptName" name="deptName" required />
+                                <span class="error" ng-if="regForm.deptName.$error.required && regForm.deptName.$touched">
+                                    هذا المدخل مطلوب
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4">
+                                رئيس القسم
+                            </label>
+                            <div class="col-md-4">
+                                <select class="form-control" ng-model="EmployeesDataObj" name="EmployeesDataObj" id="EmployeesDataObj" ng-options="DepartmentManagerObj as DepartmentManagerObj.Name for DepartmentManagerObj in EmployeesData" >
+                                    <option value="">اختر </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="form-actions right">
+                        <input type="button" value="تعديل" ng-click="saveDepartments()&& regForm.$valid" ng-show="!isEdit" class="btn green" ng-disabled="regForm.$invalid" />
+                        <a href="#Departments" class="btn default"><i class="glyphicon glyphicon-repeat"></i>الغاء</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

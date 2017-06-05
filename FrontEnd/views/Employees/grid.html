@@ -1,0 +1,117 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">لوحه التحكم</a>
+            <i class="fa fa-angle-left"></i>
+        </li>
+        <li>
+            <a href="#">{{(FavoriteNames.collector == "1"?'المحصلين' :'المستخدمين')}}</a>
+        </li>
+    </ul>
+
+</div>
+<h3 class="page-title">
+    <i class="fa fa-users" ng-show='{{ArchiveVal=="0"}}'></i>
+    <i class="icon-book-open" ng-show='{{ArchiveVal=="1"}}'></i>
+    {{pagetitle}}
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="EmployeesGridController" data-ng-init="onPageload()">
+    <div ng-include="divSearch"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="#/add_Employee" class="btn grey-cascade">
+                <i class="fa fa-plus"></i>&nbsp;جديد
+            </a>
+            <a ng-click="Employees_Search()" ng-if="CheckUserPrivileges('Users','Search')==true" class="btn grey-cascade">
+                <i class="fa fa-search"></i>&nbsp;بحث
+            </a>
+            <a href="#/archive_Employee" class="btn grey-cascade" ng-show='{{ArchiveVal=="0"}}'>
+                <i class="fa fa-archive"></i>&nbsp;أرشيف
+            </a>
+            <a href="#/Employees" class="btn grey-cascade" ng-show='{{ArchiveVal=="1"}}'>
+                <i class="fa  fa-rotate-left (alias)"></i>&nbsp;  {{(FavoriteNames.collector == "1"?'المحصلين' :'المستخدمين')}}
+            </a>
+        </div>
+      
+
+            <div class="col-md-12" >
+                <!-- Begin: life time stats -->
+                <div class="portlet light portlet-fit portlet-datatable bordered">
+                    <div class="portlet-title">
+                        <div class="caption" style="padding-right: 5px;">
+                            <select class="bs-select form-control" data-style="btn-primary" ng-model="employeeFilter.status" ng-change="EmployeeeSearch()">
+                                <option value="active"> نشط</option>
+                                <option value="archive">  ارشيف</option>
+                                <option ng-selected="true" value="">
+                                    الكل
+                                </option>
+                            </select>
+                        </div>
+                        <div class="caption" style="padding-right: 5px;">
+                            <select class="bs-select form-control" data-style="btn-primary" ng-model="Employee.brnch_rowID" ng-change="EmployeeeSearch()">
+                                <option value="">كل الفروع</option>
+                                <option ng-repeat="branchObj in BranchesData" value="{{branchObj._rowID}}">{{branchObj.branchName}}</option>
+
+                            </select>
+                        </div>
+                        <div class="div-left">
+                            <button class="fa fa-print btn grey-cascade" type="button" title="طباعة" data-original-title="طباعة" onclick="PrintHtmlTable('المحصلين', 'empDiv')"></button>
+                            <button type="button" class="mb-xs mt-xs mr-xs btn grey-cascade" title="تصدير ملف Excel" onclick="ExportDataAsExlAndPDf('المحصلين', 'tHeadEmployee', 'tbody_Emplyee', 'xls');"><i class="fa fa-file-excel-o"></i> </button>
+                            <button type="button" class="mb-xs mt-xs mr-xs btn grey-cascade" title="تصدير ملف PDF" onclick="ExportDataAsExlAndPDf('المحصلين', 'tHeadEmployee', 'tbody_Emplyee', 'pdf');"><i class="fa fa-file-pdf-o"></i> </button>
+                        </div>
+                    </div>
+                    <div class="portlet-body" id="empDiv">
+                        <div class="table-container">
+                            <table class="table table-striped table-bordered table-hover" id="sample_7">
+                                <thead thead id="tHeadEmployee">
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th id="td_Collector"> اسم المحصل </th>
+                                        <th>رقم الجوال </th>
+                                        <th>الفرع</th>
+                                        <th id="td_CollectorType"> نوع المحصل </th>
+                                        <th>الجنسيه</th>
+                                        <th>الفرع</th>
+                                        <th>بطاقه الهويه</th>
+
+                                        <th id="Process"> العمليات </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_Emplyee">
+                                    <tr ng-repeat-end="" ng-if="displayLoad">
+                                        <td colspan="6" class="loadingtd"><img src="../../../assets/pages/img/preloader.gif" /></td>
+                                    </tr>
+                                    <tr ng-repeat="empObj in Employees">
+                                        <td>{{$index + 1}}</td>
+                                        <td> {{ empObj.empArName }} </td>
+                                        <td> {{ empObj.mobile }} </td>
+                                        <td> {{ empObj.branchName }} </td>
+                                        <td> {{ empObj.userType }} </td>
+                                        <td> {{ empObj.nationalityName }} </td>
+                                        <td> {{ empObj.branchName }} </td>
+                                        <td> {{ empObj.idNo }}<a class="tooltips" title="{{empObj.issuePlace}}"> <i class="fa fa-exclamation-circle"> </i></a>  </td>
+                                        <td id="Process">
+                                            <a href="#"><i class="fa fa-clock-o" title="ساعات الدوام" ng-click="flowWork($index)"></i></a>
+                                            <a href="#" ng-show='{{ArchiveVal=="0"}}'><i class="fa fa-archive" title="نقل الى الارشيف" ng-click="RetrievEmpFromArchive($index)"></i></a>
+                                            <a href="#" ng-show='{{ArchiveVal=="1"}}'><i class="fa  fa-rotate-left (alias)" title="نقل من الارشيف" ng-click="RetrievEmpFromArchive($index)"></i></a>
+                                            <a href="#/Edit_Employees/{{empObj.id}}" ng-if="CheckUserPrivileges('Users','Edit')==true" title="تعديل"><i class="fa fa-edit (alias)"></i></a>
+                                            <a href="#" ng-click="delete($index)" ng-if="CheckUserPrivileges('Users','Delete')==true" title="حذف"><i class="fa fa-trash-o"></i></a>
+                                            <a href="#" ng-click="Activate($index)"> <i ng-class="{'fa fa-user' : empObj.status=='1', 'icon-user' : empObj.status=='0'}" title="نشط"></i></a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: life time stats -->
+            </div>
+        </div>
+</div>

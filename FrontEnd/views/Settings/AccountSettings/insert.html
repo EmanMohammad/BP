@@ -1,0 +1,98 @@
+﻿<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Dashboard</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">  Account Settings</a>
+        </li>
+    </ul>
+</div>
+<h3 class="page-title">
+    Account Settings
+</h3>
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <span class="caption-subject font-white-sunglo bold uppercase">Account Settings</span>
+        </div>
+    </div>
+
+    <div class="portlet-body form">
+       
+            <form action="#" class="form-horizontal" role="form" name='regForm' novalidate>
+                <div class="form-body">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    User Name
+                                    <span class="required" aria-required="true"> * </span>
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="userName" ng-model="newAccountSettings.userName" ng-change="getAccountBalance()" required>
+                                    <span class="error" ng-if="regForm.userName.$error.required && regForm.userName.$touched">
+                                        required
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Password
+                                    <span class="required" aria-required="true"> * </span>
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="newAccountSettings.password" name="password" ng-change="getAccountBalance()" required>
+                                    <span class="error" ng-if="regForm.password.$error.required && regForm.password.$touched">
+                                        required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Sender Name
+                                    <span class="required" aria-required="true"> * </span>
+                                </label>
+                                <div class="col-md-8">
+
+                                    <input type="text" class="form-control" ng-model="newAccountSettings.senderName" name="Sender" id="SenderDataObj"  required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4">
+                                    Balance
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" ng-model="newAccountSettings.balance" name="balance">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                        <!--<div class="col-md-3">
+                     <a href="javascript:;" class="btn grey-cascade" ng-click="InsertSenderName()">
+                        <i class="fa fa-plus"></i>&nbsp;إضافة اسم مرسل
+                     </a>
+                </div>-->
+                    </div>
+                    <div class="">
+                        <div class="form-actions right">
+
+                            <a ng-click="saveAccountSettings()&& regForm.$valid" class="btn green" ng-disabled="regForm.$invalid">
+                                <i class="glyphicon glyphicon-plus"></i> Save
+                            </a>
+
+                            <a href="#AccountSettings" class="btn default "><i class="glyphicon glyphicon-repeat"></i> Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div>
+
+</div>
+

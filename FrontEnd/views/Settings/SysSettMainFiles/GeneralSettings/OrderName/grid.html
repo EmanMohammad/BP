@@ -1,0 +1,51 @@
+
+<h3 class="page-title">
+    <!--<i class="fa fa-coffee"></i>-->
+    اسم الطلب
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="OrderNameController" data-ng-init="onPageload()">
+    <div class="row">
+        <div class="col-md-10">
+
+            <a href="javascript:;" class="btn grey-cascade"  ng-click="InsertOrderName()">
+                <i class="fa fa-plus"></i>&nbsp;جديد
+            </a>
+
+        </div>
+        <div class="col-md-12" id="div_OrderName">
+            <!-- Begin: life time stats -->
+            <div class="portlet light portlet-fit portlet-datatable bordered">
+     
+                <div class="portlet-body">
+                    <div class="table-container">
+                        <table class="table table-striped table-bordered table-hover" id="tbl_OrderName">
+                            <thead id="tHeadOrderName">
+                                <tr>
+                                    <th>#</th>
+                                    <th> الاسم </th>
+                                    <th id="Process"> العمليات </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat-end="" ng-if="displayLoad">
+                                    <td colspan="3" class="loadingtd"><img src="../../../assets/pages/img/preloader.gif" /></td>
+                                </tr>
+                                <tr ng-repeat="OrderNameObj in OrderName">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{ OrderNameObj.orderName }}</td>
+                                    <td id="Process">
+                                        <a href="#"  class="tooltips" ng-click="edit($index)"   title="تعديل"><i class="fa fa-edit (alias)"></i></a>
+                                        <a href="#"  class="tooltips" ng-click="delete($index)"  title="حذف"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- End: life time stats -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header box green">
+                <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name='regForm' novalidate>
+                    <div class="form-group">
+                        <label class="col-md-4">
+                           الاسم
+                            <span class="required" aria-required="true"> * </span>
+                        </label>
+                        <div class="col-md-5">
+                            <input type="text"  class="form-control" id="treatmentName" ng-model="treatmentName" name="treatmentName" required />
+                            <span class="error" ng-if="regForm.treatmentName.$error.required && regForm.treatmentName.$touched">
+                                هذا المدخل مطلوب
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="close()&& regForm.$valid" class="btn btn green" data-dismiss="modal" ng-disabled="regForm.$invalid">تعديل</button>
+                <button type="button" ng-click="cancel()" class="btn grey-cascade">إلغاء</button>
+            </div>
+        </div>
+    </div>
+</div>

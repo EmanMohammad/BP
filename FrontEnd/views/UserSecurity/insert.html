@@ -1,0 +1,64 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header box green">
+                <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name='regForm' novalidate>
+                    <div class="form-group">
+                        <label class="col-md-4">
+                            الإسم بالعربى
+                            <span class="required" aria-required="true"> * </span>
+                        </label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="arName" ng-model="newUserSecurity.sRoleArName" required>
+                            <span class="error" ng-if="regForm.arName.$error.required && regForm.arName.$touched">
+                                هذا المدخل مطلوب
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4">
+                            الإسم بالإنجليزى
+                            <span class="required" aria-required="true"> * </span>
+                        </label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="enName" ng-model="newUserSecurity.sRoleName" required>
+                            <span class="error" ng-if="regForm.enName.$error.required && regForm.enName.$touched">
+                                هذا المدخل مطلوب
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4">
+                            أنظمة سابقة
+                            <span class="required" aria-required="true"> * </span>
+                        </label>
+                        <div class="col-md-6">
+                            <select class="form-control" ng-model="newUserSecurity.prevRole" ng-change="PreviousRoleChange()">
+                                <option value="">اختر نظام</option>
+                                <option ng-repeat="user in UserSecurity" value="{{user.sRoleID}}">{{user.sRoleArName}}</option>
+                            </select>
+                            <!--<input type="text" class="form-control" name="previousRoleList" ng-model="newUserSecurity.previousRoleList" required>-->
+                            <span class="error" ng-if="regForm.previousRoleList.$error.required && regForm.previousRoleList.$touched">
+                                هذا المدخل مطلوب
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-body">
+                        <div class="portlet-body" id="div_tree">
+                            <div id="tree_2" class="tree-demo"> </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="close()&& regForm.$valid" class="btn btn green" data-dismiss="modal" ng-disabled="regForm.$invalid">إضافة</button>
+                <button type="button" ng-click="cancel()" class="btn grey-cascade">إلغاء</button>
+            </div>
+        </div>
+    </div>
+</div>
